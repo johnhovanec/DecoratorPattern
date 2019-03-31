@@ -1,10 +1,17 @@
 package receiptsystem;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
+		Store store = new Store();
+		Date date;
+		PurchasedItems purchasedItems = new PurchasedItems();
 		Scanner scanner = new Scanner(System.in);
 		String readLine = "";
 		
@@ -18,6 +25,19 @@ public class Main {
 			switch (readLine) {
 			case "1":
 				// Start New Receipt
+				System.out.println("Enter a date in the format MM-DD-YYYY for the new receipt followed by enter:");
+				readLine = scanner.nextLine();
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+				try {
+					date = dateFormat.parse(readLine);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				System.out.println("-----     Available items:     -----");
+				store.itemsList.forEach((item) -> System.out.println(
+						item.getItemCode() + "\t" + 
+						item.getItemDescription() + "\t" +
+						item.getItemPrice()));
 				break;
 			case "2":
 				// Add Items
