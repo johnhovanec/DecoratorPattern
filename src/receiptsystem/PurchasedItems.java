@@ -19,6 +19,10 @@ public class PurchasedItems {
 		    total += Double.parseDouble(item.getItemPrice());
 		return total;
 	}
+	
+	public StoreItem getLastItem() {
+		return items.get(items.size() - 1);
+	}
 
 	public boolean containsItem(String itemCode) {
 		if (items.contains(itemCode))

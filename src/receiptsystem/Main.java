@@ -10,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Store store = new Store();
-		Date date;
+		Date date = null;
 		PurchasedItems purchasedItems = new PurchasedItems();
 		Scanner scanner = new Scanner(System.in);
 		String readLine = "";
@@ -27,22 +27,36 @@ public class Main {
 				// Start New Receipt
 				System.out.println("Enter a date in the format MM-DD-YYYY for the new receipt followed by enter:");
 				readLine = scanner.nextLine();
-				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+				DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
 				try {
 					date = dateFormat.parse(readLine);
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				System.out.println("-----     Available items:     -----");
-				store.itemsList.forEach((item) -> System.out.println(
-						item.getItemCode() + "\t" + 
-						item.getItemDescription() + "\t" +
-						item.getItemPrice()));
+				System.out.println("New receipt started for date: " + date + "\n");
+				
 				break;
 			case "2":
 				// Add Items
+				System.out.println("----------------     Available items     ---------------- \n" 
+						+ "Item Code\tDescription\t\t\t\tPrice");
+				store.itemsList.forEach((item) -> System.out.println(
+						item.getItemCode() + "\t\t" + 
+						item.getItemDescription() + "\t\t" +
+						item.getItemPrice()));
 				
-				break;
+				System.out.println("Enter the Item Code for the item to add to the receipt, press D when done:");
+				while (!readLine.equalsIgnoreCase("D")) {
+					readLine = scanner.nextLine();
+					if(readLine.equalsIgnoreCase("D"))
+						break;
+					else {
+						purchasedItems.addItem(new StoreItem(readLine, null, null));
+					}
+					System.out.println(purchasedItems.getLastItem().getItemCode());
+				}
+				
+				//break;
 			case "3":
 				// Display Receipt
 				
