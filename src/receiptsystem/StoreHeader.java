@@ -16,12 +16,11 @@ public class StoreHeader {
 	}
 
 	public String getStateCode() {
-		// ...
-		return new String();
+		return state_code;
 	}
 
+	// Check -- this may need a different implementation
 	public String toString() {
-		// ...
-		return new String();
+		return street_addr + "\n" + state_code + "\n" + zip_code + "\n" + store_num + "\n" + phone_num;
 	}
 }

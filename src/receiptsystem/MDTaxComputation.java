@@ -5,6 +5,8 @@ import java.util.Date;
 
 import abstractClasses.TaxComputationMethod;
 
+//tax computation objects for other states are similar
+
 public class MDTaxComputation extends TaxComputationMethod {
 	public double computeTax(PurchasedItems items, Date date) {
 		// calls private method taxHoliday as part of this computation-- ask, think it
@@ -43,4 +45,3 @@ public class MDTaxComputation extends TaxComputationMethod {
 	}
 
 }
-// tax computation objects for other states are similar

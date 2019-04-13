@@ -18,6 +18,7 @@ public class Main {
 		String readLine = "";
 		
 		ReceiptFactory receiptFactory = new ReceiptFactory();
+		receiptFactory.getClass();
 		
 		while (!readLine.equalsIgnoreCase("X")) {
 			System.out.println("\n----- Welcome to the Best Buy Receipt System -----\n");
