@@ -13,6 +13,7 @@ public class BasicReceipt implements Receipt {
 
 	public BasicReceipt(PurchasedItems items, Date date) { // Date may also be a String type
 		this.items = items;
+		this.date = date;
 	}
 
 	public void setStoreHeader(StoreHeader h) {

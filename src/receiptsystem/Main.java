@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import factories.ReceiptFactory;
+import interfaces.Receipt;
 
 public class Main {
 
@@ -16,9 +17,8 @@ public class Main {
 		PurchasedItems purchasedItems = new PurchasedItems();
 		Scanner scanner = new Scanner(System.in);
 		String readLine = "";
-		
 		ReceiptFactory receiptFactory = new ReceiptFactory();
-		receiptFactory.getClass();
+		Receipt receipt;
 		
 		while (!readLine.equalsIgnoreCase("X")) {
 			System.out.println("\n----- Welcome to the Best Buy Receipt System -----\n");
@@ -61,9 +61,12 @@ public class Main {
 					System.out.println(purchasedItems.getLastItem().getItemCode());
 				}
 				
-				//break;
+				// Call factory to make receipt
+				receipt = receiptFactory.getReceipt(purchasedItems, date);
+				break;
 			case "3":
 				// Display Receipt
+				
 				
 				break;
 			case "X":
@@ -75,11 +78,12 @@ public class Main {
 		}
 		System.out.println("Goodbye");
 		scanner.close();
-		// 1. Creates a Data (Date?) object (either from Java API or date entered by user)
-		// 2. Creates a PurchasedItems object (selections made by user)
-		// 3. Constructs a ReceiptFactory object.
-		// 3. Prompts user for items to purchase, storing each in PurchasedItems.
+		/// 	1. Creates a Data (Date?) object (either from Java API or date entered by user)
+		/// 	2. Creates a PurchasedItems object (selections made by user)
+		///		3. Constructs a ReceiptFactory object.
+		///		3. Prompts user for items to purchase, storing each in PurchasedItems.
 		// 4. Calls the getReceipt method of the factory to obtain constructed receipt.
+		
 		// // 5. Prints receipt by call to method prtReceipt.
 		// get receipt date
 		// (prompt user for current date)
