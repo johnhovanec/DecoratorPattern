@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import factories.ReceiptFactory;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -14,6 +16,8 @@ public class Main {
 		PurchasedItems purchasedItems = new PurchasedItems();
 		Scanner scanner = new Scanner(System.in);
 		String readLine = "";
+		
+		ReceiptFactory receiptFactory = new ReceiptFactory();
 		
 		while (!readLine.equalsIgnoreCase("X")) {
 			System.out.println("\n----- Welcome to the Best Buy Receipt System -----\n");
@@ -70,7 +74,7 @@ public class Main {
 		}
 		System.out.println("Goodbye");
 		scanner.close();
-		// 1. Creates a Data object (either from Java API or date entered by user)
+		// 1. Creates a Data (Date?) object (either from Java API or date entered by user)
 		// 2. Creates a PurchasedItems object (selections made by user)
 		// 3. Constructs a ReceiptFactory object.
 		// 3. Prompts user for items to purchase, storing each in PurchasedItems.

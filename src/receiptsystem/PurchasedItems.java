@@ -20,6 +20,7 @@ public class PurchasedItems {
 		return total;
 	}
 	
+	// Needed???
 	public StoreItem getLastItem() {
 		return items.get(items.size() - 1);
 	}
