@@ -15,8 +15,24 @@ public class StoreHeader {
 		this.store_num = store_num;
 	}
 
+	public String getStreetAddr() {
+		return street_addr;
+	}
+	
+	public String getZipCode() {
+		return zip_code;
+	}
+	
 	public String getStateCode() {
 		return state_code;
+	}
+	
+	public String getPhoneNum() {
+		return phone_num;
+	}
+	
+	public String getStoreNum() {
+		return store_num;
 	}
 
 	// Check -- this may need a different implementation

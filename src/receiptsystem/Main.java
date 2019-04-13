@@ -18,7 +18,7 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		String readLine = "";
 		ReceiptFactory receiptFactory = new ReceiptFactory();
-		Receipt receipt;
+		Receipt receipt = null;
 		
 		while (!readLine.equalsIgnoreCase("X")) {
 			System.out.println("\n----- Welcome to the Best Buy Receipt System -----\n");
@@ -66,7 +66,7 @@ public class Main {
 				break;
 			case "3":
 				// Display Receipt
-				
+				receipt.prtReceipt();
 				
 				break;
 			case "X":

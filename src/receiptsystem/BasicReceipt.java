@@ -1,5 +1,6 @@
 package receiptsystem;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import abstractClasses.TaxComputationMethod;
@@ -25,6 +26,10 @@ public class BasicReceipt implements Receipt {
 	}
 
 	public void prtReceipt() {
-// to implement 
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+		System.out.printf( "%n %-20s %20s %n", "BEST BUY", "STORE #" +store_header.getStoreNum());
+		System.out.printf( "%-20s %20s %n", store_header.getStreetAddr(), store_header.getPhoneNum());
+		System.out.printf( "%n %-20s %n", formatter.format(date));
+		
 	}
 }
