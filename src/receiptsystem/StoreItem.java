@@ -24,4 +24,8 @@ public class StoreItem {
 		return itemPrice;
 	}
 	
+	public String toString() {
+		return itemCode + "\t" + itemDescription + "\t" + itemPrice;
+	}
+	
 }

@@ -2,8 +2,10 @@ package receiptsystem;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 
 import abstractClasses.TaxComputationMethod;
+import interfaces.ItemsIterator;
 import interfaces.Receipt;
 
 public class BasicReceipt implements Receipt {
@@ -27,9 +29,17 @@ public class BasicReceipt implements Receipt {
 
 	public void prtReceipt() {
 		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-		System.out.printf( "%n %-20s %20s %n", "BEST BUY", "STORE #" +store_header.getStoreNum());
-		System.out.printf( "%-20s %20s %n", store_header.getStreetAddr(), store_header.getPhoneNum());
-		System.out.printf( "%n %-20s %n", formatter.format(date));
+		ItemsIterator itr = items.createIterator();
+		StoreItem storeItem;
 		
+		System.out.printf("%n %-20s %20s %n", "BEST BUY", "STORE #" + store_header.getStoreNum());
+		System.out.printf("%-20s %20s %n", store_header.getStreetAddr(), store_header.getPhoneNum());
+		System.out.printf("%n %-20s %n", formatter.format(date));
+		System.out.printf("%n %-20s %n", "ITEM #");
+		while (itr.hasNext()) {
+			storeItem = itr.next();
+			System.out.printf("%-20s %20s %20s %n", storeItem.getItemCode(), storeItem.getItemDescription(), storeItem.getItemPrice());
+		}
+
 	}
 }

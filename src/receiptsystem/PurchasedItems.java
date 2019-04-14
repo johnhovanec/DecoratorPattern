@@ -2,11 +2,17 @@ package receiptsystem;
 
 import java.util.ArrayList;
 
+import interfaces.ItemsIterator;
+
 public class PurchasedItems {
 	private ArrayList<StoreItem> items;
 
 	public PurchasedItems() {
 		items = new ArrayList();
+	}
+	
+	public ItemsIterator createIterator() {
+		return new PurchasedItemsIterator(items);
 	}
 
 	public void addItem(StoreItem item) {
@@ -19,6 +25,14 @@ public class PurchasedItems {
 		    total += Double.parseDouble(item.getItemPrice());
 		return total;
 	}
+	
+//	public StoreItem getItem(int index) {
+//		return items.get(index);
+//	}
+	
+//	public int getSize() {
+//		return items.size();
+//	}
 	
 	// Needed???
 	public StoreItem getLastItem() {
