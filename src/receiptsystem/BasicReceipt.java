@@ -31,6 +31,8 @@ public class BasicReceipt implements Receipt {
 		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 		ItemsIterator itr = items.createIterator();
 		StoreItem storeItem;
+		double totalCost = items.getTotalCost() + tc.computeTax(items, date);
+		
 		System.out.println("\n===================================================\n");
 		System.out.printf("%n%-30s %20s %n", "BEST BUY", "STORE #" + store_header.getStoreNum());
 		System.out.printf("%-18s, %-3s%-10s%14s%n", store_header.getStreetAddr(), store_header.getStateCode(),
@@ -45,6 +47,7 @@ public class BasicReceipt implements Receipt {
 		System.out.printf("%n%-30s %20s %n", "Total Sale", " $" + items.getTotalCost());
 		System.out.printf("%n%-2s %-10s(%-4s) %31s %n", store_header.getStateCode(), "Sales Tax ",
 				tc.getSalesTax(), " $" + tc.computeTax(items, date));
+		System.out.printf("%n%-30s %20s %n", "TOTAL SALE", " $" + (items.getTotalCost() + tc.computeTax(items, date)));
 
 	}
 

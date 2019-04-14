@@ -28,13 +28,14 @@ public class MDTaxComputation extends TaxComputationMethod {
 		// MD tax holiday is August 14–20
 		
 	    if(checkDateRange())
-	      System.out.println("Match");
+	      System.out.println("Tax Holiday!");
 	    else
-	      System.out.println("No Match");
+	      System.out.println("Not a tax holiday");
 	    
 		return checkDateRange(); 
 	}
 	
+	// Helper method, needed?
 	private boolean checkDateRange() {
 		final int HOLIDAY_MONTH = Calendar.AUGUST;  // this is a static int
 		final int START_DATE = 14;
