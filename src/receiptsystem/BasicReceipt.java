@@ -31,15 +31,28 @@ public class BasicReceipt implements Receipt {
 		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 		ItemsIterator itr = items.createIterator();
 		StoreItem storeItem;
-		
-		System.out.printf("%n %-20s %20s %n", "BEST BUY", "STORE #" + store_header.getStoreNum());
-		System.out.printf("%-20s %20s %n", store_header.getStreetAddr(), store_header.getPhoneNum());
-		System.out.printf("%n %-20s %n", formatter.format(date));
-		System.out.printf("%n %-20s %n", "ITEM #");
+		System.out.println("\n===================================================\n");
+		System.out.printf("%n%-30s %20s %n", "BEST BUY", "STORE #" + store_header.getStoreNum());
+		System.out.printf("%-30s %20s %n", store_header.getStreetAddr(), store_header.getPhoneNum());
+		System.out.printf("%n%-20s %n", formatter.format(date));
+		System.out.printf("%n%-20s %n", "ITEM #");
 		while (itr.hasNext()) {
 			storeItem = itr.next();
-			System.out.printf("%-20s %20s %20s %n", storeItem.getItemCode(), storeItem.getItemDescription(), storeItem.getItemPrice());
+			System.out.printf("%-10s%-30s%11s%n", storeItem.getItemCode(), storeItem.getItemDescription(), storeItem.getItemPrice());
 		}
+		System.out.printf("%n%-30s %20s %n", "Total Sale", " $" + getTotalSale());
 
+	}
+	
+	private double getTotalSale() {
+		ItemsIterator itr = items.createIterator();
+		StoreItem storeItem;
+		double total = 0.0;
+
+		while (itr.hasNext()) {
+			storeItem = itr.next();
+			total += Double.parseDouble(storeItem.getItemPrice());
+		}
+		return total;
 	}
 }
