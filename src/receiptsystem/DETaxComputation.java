@@ -4,12 +4,14 @@ import java.util.Date;
 import abstractClasses.TaxComputationMethod;
 
 public class DETaxComputation extends TaxComputationMethod {
+	private final double TAX_RATE = 0.0;
+	
 	public double computeTax(PurchasedItems items, Date date) {
 		// calls private method taxHoliday as part of this computation-- ask, think it
 		// has to be protected
 
 		// DE has no sales tax, always return 0.0
-		return 0.0;
+		return TAX_RATE;
 	}
 
 	protected boolean taxHoliday(Date date) {
@@ -19,5 +21,10 @@ public class DETaxComputation extends TaxComputationMethod {
 
 		// DE has no sales tax, OK?
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String getSalesTax() {
+		return String.valueOf(TAX_RATE);
 	}
 }

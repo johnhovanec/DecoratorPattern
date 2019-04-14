@@ -8,13 +8,17 @@ import abstractClasses.TaxComputationMethod;
 //tax computation objects for other states are similar
 
 public class MDTaxComputation extends TaxComputationMethod {
+	public final double TAX_RATE = 0.06; // Ok in the subclass?
+	
 	public double computeTax(PurchasedItems items, Date date) {
 		// calls private method taxHoliday as part of this computation-- ask, think it
 		// has to be protected
-		if (taxHoliday(date))
+		if (taxHoliday(date)) {
 			return 0.0;
-		else
-			return 0.06;
+		}
+		else {
+			return TAX_RATE * items.getTotalCost();
+		}	
 	}
 
 	protected boolean taxHoliday(Date date) {
@@ -42,6 +46,10 @@ public class MDTaxComputation extends TaxComputationMethod {
 			return true;
 		else
 			return false;
+	}
+
+	public String getSalesTax() {
+		return String.valueOf(TAX_RATE);
 	}
 
 }
