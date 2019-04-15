@@ -1,7 +1,11 @@
 package receiptsystem;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import abstractClasses.TaxComputationMethod;
 
@@ -9,16 +13,15 @@ import abstractClasses.TaxComputationMethod;
 
 public class MDTaxComputation extends TaxComputationMethod {
 	public final double TAX_RATE = 0.06; // Ok in the subclass?
-	
+
 	public double computeTax(PurchasedItems items, Date date) {
 		// calls private method taxHoliday as part of this computation-- ask, think it
 		// has to be protected
 		if (taxHoliday(date)) {
 			return 0.0;
-		}
-		else {
+		} else {
 			return TAX_RATE * items.getTotalCost();
-		}	
+		}
 	}
 
 	protected boolean taxHoliday(Date date) {
@@ -26,24 +29,42 @@ public class MDTaxComputation extends TaxComputationMethod {
 		// returns false. Supporting method of method computeTax.
 		// ask about this method okay to be protected, instructions mentioned private
 		// MD tax holiday is August 14–20
-		
-	    if(checkDateRange())
-	      System.out.println("Tax Holiday!");
-	    else
-	      System.out.println("Not a tax holiday");
-	    
-		return checkDateRange(); 
+
+		// Temp
+		if (checkDateRange(date))
+			System.out.println("Tax Holiday!");
+		else
+			System.out.println("Not a tax holiday");
+
+		return checkDateRange(date);
 	}
-	
+
 	// Helper method, needed?
-	private boolean checkDateRange() {
-		final int HOLIDAY_MONTH = Calendar.AUGUST;  // this is a static int
-		final int START_DATE = 14;
-		final int END_DATE = 20;
-	    int current_month = Calendar.getInstance().get(Calendar.MONTH);
-	    int current_date = Calendar.getInstance().get(Calendar.DATE);
-	    
-		if (HOLIDAY_MONTH == current_month && START_DATE <= current_date && current_date <= END_DATE) 
+	private boolean checkDateRange(Date date) {
+		final String HOLIDAY_START_DATE = "08-14-2019";
+		final String HOLIDAY_END_DATE = "08-20-2019";
+		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+		Date startDate = null;
+		Date endDate = null;
+		try {
+			startDate = dateFormat.parse(HOLIDAY_START_DATE);
+			endDate = dateFormat.parse(HOLIDAY_END_DATE);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Calendar receiptDate = Calendar.getInstance();
+		receiptDate.setTime(date);
+		int YEAR = receiptDate.get(Calendar.YEAR);
+        
+		Calendar holidayStart = Calendar.getInstance();
+		holidayStart.setTime(startDate);
+		Calendar holidayEnd = Calendar.getInstance();
+		holidayEnd.setTime(endDate);
+    	
+        
+		if (receiptDate.after(holidayStart) && receiptDate.before(holidayEnd))
 			return true;
 		else
 			return false;
