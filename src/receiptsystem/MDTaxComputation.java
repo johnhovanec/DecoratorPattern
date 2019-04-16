@@ -20,7 +20,7 @@ public class MDTaxComputation extends TaxComputationMethod {
 		if (taxHoliday(date)) {
 			return 0.0;
 		} else {
-			return TAX_RATE * items.getTotalCost();
+			return TAX_RATE;
 		}
 	}
 
@@ -60,18 +60,17 @@ public class MDTaxComputation extends TaxComputationMethod {
         
 		Calendar holidayStart = Calendar.getInstance();
 		holidayStart.setTime(startDate);
+		holidayStart.set(Calendar.YEAR, YEAR); 
+		
 		Calendar holidayEnd = Calendar.getInstance();
 		holidayEnd.setTime(endDate);
+		holidayEnd.set(Calendar.YEAR, YEAR); 
     	
         
 		if (receiptDate.after(holidayStart) && receiptDate.before(holidayEnd))
 			return true;
 		else
 			return false;
-	}
-
-	public String getSalesTax() {
-		return String.valueOf(TAX_RATE);
 	}
 
 }

@@ -12,7 +12,4 @@ public abstract class TaxComputationMethod {
 	public abstract double computeTax(PurchasedItems items, Date date);
 
 	protected abstract boolean taxHoliday(Date date);  // guessing it has a param; guessing it is protected -ask?
-	
-	// OK to add this?
-	public abstract String getSalesTax();
 }
