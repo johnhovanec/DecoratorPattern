@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import abstractClasses.TaxComputationMethod;
 
@@ -41,36 +40,27 @@ public class MDTaxComputation extends TaxComputationMethod {
 
 	// Helper method, needed?
 	private boolean checkDateRange(Date date) {
-		final String HOLIDAY_START_DATE = "08-14-2019";
-		final String HOLIDAY_END_DATE = "08-20-2019";
-		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
-		Date startDate = null;
-		Date endDate = null;
-		try {
-			startDate = dateFormat.parse(HOLIDAY_START_DATE);
-			endDate = dateFormat.parse(HOLIDAY_END_DATE);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		Calendar receiptDate = Calendar.getInstance();
 		receiptDate.setTime(date);
 		int YEAR = receiptDate.get(Calendar.YEAR);
-        
-		Calendar holidayStart = Calendar.getInstance();
-		holidayStart.setTime(startDate);
-		holidayStart.set(Calendar.YEAR, YEAR); 
-		
-		Calendar holidayEnd = Calendar.getInstance();
-		holidayEnd.setTime(endDate);
-		holidayEnd.set(Calendar.YEAR, YEAR); 
-    	
-        
-		if (receiptDate.after(holidayStart) && receiptDate.before(holidayEnd))
+
+		// MD Tax holiday is August 14-20. Setting to get inclusive start and end date
+		final String HOLIDAY_START_DATE = "08-13-" + YEAR;
+		final String HOLIDAY_END_DATE = "08-21-" + YEAR;
+		DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+
+		Calendar start = Calendar.getInstance();
+		Calendar end = Calendar.getInstance();
+		try {
+			start.setTime(df.parse(HOLIDAY_START_DATE));
+			end.setTime(df.parse(HOLIDAY_END_DATE));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		if (receiptDate.after(start) && receiptDate.before(end))
 			return true;
 		else
 			return false;
 	}
-
 }
