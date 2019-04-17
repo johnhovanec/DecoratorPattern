@@ -16,6 +16,7 @@ import receiptsystem.PurchasedItems;
 import receiptsystem.StoreHeader;
 import interfaces.AddOn;
 import interfaces.Receipt;
+import interfaces.SecondaryHeading;
 
 public class ReceiptFactory {
 	private String CONFIG_FILE_PATH = "./src/config.txt";
@@ -54,6 +55,13 @@ public class ReceiptFactory {
 		BasicReceipt receipt = new BasicReceipt(items, date);
 		receipt.setStoreHeader(store_header);
 		receipt.setTaxComputationMethod(stateTaxMethod);
+		for (AddOn addOn : addOns) {
+			if(addOn.applies(items)) {
+				if(addOn instanceof SecondaryHeading)
+					System.out.println("Secondary Heading");
+			}
+				
+		}
 		return (Receipt) receipt;
 	}
 	
