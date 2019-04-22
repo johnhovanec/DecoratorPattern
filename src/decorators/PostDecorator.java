@@ -10,7 +10,8 @@ public class PostDecorator extends Decorator {
 
 	public PostDecorator(Receipt r, AddOn a) {
 		super(r, a);
-		// TODO Auto-generated constructor stub
+		this.r = r;
+		this.a = a;
 	}
 
 	@Override

@@ -14,10 +14,14 @@ import java.util.Scanner;
 
 import abstractClasses.Decorator;
 import abstractClasses.TaxComputationMethod;
+import decorators.PostDecorator;
 import decorators.PreDecorator;
 import receiptsystem.PurchasedItems;
+import receiptsystem.Rebate1406;
 import receiptsystem.StoreHeader;
 import interfaces.AddOn;
+import interfaces.Coupon;
+import interfaces.Rebate;
 import interfaces.Receipt;
 import interfaces.SecondaryHeading;
 
@@ -26,7 +30,7 @@ public class ReceiptFactory {
 	StoreHeader store_header; // contains street_addr, zip_code, state_code, phone num, store num
 	private TaxComputationMethod[] taxComputationsObjs; // tax computation objs (for each state)
 	private TaxComputationMethod stateTaxMethod;
-	private AddOn[] addOns = new AddOn[] {new HolidayGreeting()}; // secondary heading, rebate and coupon add-ons (hardcoded here)
+	private AddOn[] addOns = new AddOn[] {new HolidayGreeting(), new Rebate1406(), }; // secondary heading, rebate and coupon add-ons (hardcoded here)
 
 	public ReceiptFactory() { // constructor
 		// 1. Populates array of TaxComputationMethod objects and array of AddOn objects
@@ -51,7 +55,7 @@ public class ReceiptFactory {
 		// 		4. Traverses over all AddOn objects, calling the applies method of each. If
 		// 		an AddOn object applies, then determines if the AddOn is of type
 		// 		SecondaryHeader, Rebate, or Coupon.
-		// If of type SecondaryHeader, then creates a PreDecorator for other AddOn. If of
+		// 		If of type SecondaryHeader, then creates a PreDecorator for other AddOn. If of
 		// type Rebate or Coupon, then creates a PostDecorator.
 		// 5. Links in the decorator object based on the Decorator design pattern.
 		// 6. Returns decorated BasicReceipt object as type Receipt.
@@ -61,9 +65,10 @@ public class ReceiptFactory {
 		for (AddOn addOn : addOns) {
 			if(addOn.applies(items)) {
 				if(addOn instanceof SecondaryHeading) {
-					//System.out.println("Secondary Heading");
 					receipt = new PreDecorator(receipt, addOn);
-					//receipt.prtReceipt();
+				}
+				else if(addOn instanceof Rebate || addOn instanceof Coupon) {
+					receipt = new PostDecorator(receipt, addOn);
 				}
 			}
 		}

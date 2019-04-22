@@ -11,7 +11,7 @@ public class HolidayGreeting implements SecondaryHeading {
 
 	@Override
 	public String getLines() {
-		return "* Happy Holidays from Best Buy *";
+		return "\t * Happy Holidays from Best Buy *";
 	}
 
 }

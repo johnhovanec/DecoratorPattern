@@ -23,7 +23,7 @@ public class Store {
     
     // --- private methods
     private void populateStoreItems(){
-        itemsList.add(new StoreItem("4601", "Ducky Mechanical Keyboard, TKL", "112.50"));
+        itemsList.add(new StoreItem("1406", "Ducky Mechanical Keyboard, TKL", "112.50"));
         itemsList.add(new StoreItem("6002", "USB 19GB Thumbdrive, silver", "12.80"));
         itemsList.add(new StoreItem("1303", "Dell Optiplex 3020, Intel i7", "852.90"));
         itemsList.add(new StoreItem("1704", "Logitech Bluetooth Mouse, gray", "32.98"));
