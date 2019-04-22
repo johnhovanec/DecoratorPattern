@@ -10,7 +10,8 @@ public class PreDecorator extends Decorator{
 	
 	public PreDecorator(Receipt r, AddOn a) {
 		super(r, a);
-		// TODO Auto-generated constructor stub
+		this.r = r;		// Check if call to this is OK?
+		this.a = a;
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public class Main {
 			System.out.println("\n----- Welcome to the Best Buy Receipt System -----\n");
 			System.out.printf("Please choose from the following options:\n" + "1. Start New Receipt\n"
 					+ "2. Add Items\n" + "3. Display Receipt\n" + "\n"
-					+ "Enter the number of your selection and then press Enter. To exit, press X.");
+					+ "Enter the number of your selection and then press Enter. To exit, press X.\n\n");
 
 			readLine = scanner.nextLine();
 			switch (readLine) {

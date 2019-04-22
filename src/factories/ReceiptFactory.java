@@ -11,7 +11,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
+
+import abstractClasses.Decorator;
 import abstractClasses.TaxComputationMethod;
+import decorators.PreDecorator;
 import receiptsystem.PurchasedItems;
 import receiptsystem.StoreHeader;
 import interfaces.AddOn;
@@ -45,22 +48,24 @@ public class ReceiptFactory {
 		// 		BasicReceipt)
 		// 		3. Sets the TaxComputationMethod object of the BasicReceipt (by call to the
 		// 		setTaxComputationMethod of BasicReceipt).
-		// 4. Traverses over all AddOn objects, calling the applies method of each. If
-		// an AddOn object applies, then determines if the AddOn is of type
-		// SecondaryHeader, Rebate, or Coupon.
-		// If of type SecondaryHeader, then creates a PreDecorator for othe AddOn. If of
+		// 		4. Traverses over all AddOn objects, calling the applies method of each. If
+		// 		an AddOn object applies, then determines if the AddOn is of type
+		// 		SecondaryHeader, Rebate, or Coupon.
+		// If of type SecondaryHeader, then creates a PreDecorator for other AddOn. If of
 		// type Rebate or Coupon, then creates a PostDecorator.
 		// 5. Links in the decorator object based on the Decorator design pattern.
 		// 6. Returns decorated BasicReceipt object as type Receipt.
-		BasicReceipt receipt = new BasicReceipt(items, date);
-		receipt.setStoreHeader(store_header);
-		receipt.setTaxComputationMethod(stateTaxMethod);
+		Receipt receipt = new BasicReceipt(items, date);
+		((BasicReceipt) receipt).setStoreHeader(store_header);
+		((BasicReceipt) receipt).setTaxComputationMethod(stateTaxMethod);
 		for (AddOn addOn : addOns) {
 			if(addOn.applies(items)) {
-				if(addOn instanceof SecondaryHeading)
-					System.out.println("Secondary Heading");
+				if(addOn instanceof SecondaryHeading) {
+					//System.out.println("Secondary Heading");
+					receipt = new PreDecorator(receipt, addOn);
+					//receipt.prtReceipt();
+				}
 			}
-				
 		}
 		return (Receipt) receipt;
 	}
