@@ -1,6 +1,7 @@
 package factories;
 
 import receiptsystem.BasicReceipt;
+import receiptsystem.Coupon100Get10Percent;
 import receiptsystem.DETaxComputation;
 import receiptsystem.HolidayGreeting;
 import receiptsystem.MDTaxComputation;
@@ -30,7 +31,7 @@ public class ReceiptFactory {
 	StoreHeader store_header; // contains street_addr, zip_code, state_code, phone num, store num
 	private TaxComputationMethod[] taxComputationsObjs; // tax computation objs (for each state)
 	private TaxComputationMethod stateTaxMethod;
-	private AddOn[] addOns = new AddOn[] {new HolidayGreeting(), new Rebate1406(), }; // secondary heading, rebate and coupon add-ons (hardcoded here)
+	private AddOn[] addOns = new AddOn[] {new HolidayGreeting(), new Rebate1406(), new Coupon100Get10Percent()}; // secondary heading, rebate and coupon add-ons (hardcoded here)
 
 	public ReceiptFactory() { // constructor
 		// 1. Populates array of TaxComputationMethod objects and array of AddOn objects

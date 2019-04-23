@@ -14,7 +14,10 @@ public class Coupon100Get10Percent implements Rebate{
 
 	@Override
 	public String getLines() {
-		return null;
+		return "10% OFF COUPON FOR SPENDING OVER $100\n\n" +
+				"Present this coupon at your next purchase\n" +
+				"and receive 10% off your purchase!\n\n" +
+				"Restrictions apply, see store for details\n";
 	}
 
 }
