@@ -1,6 +1,7 @@
 package factories;
 
 import receiptsystem.BasicReceipt;
+import receiptsystem.CATaxComputation;
 import receiptsystem.Coupon100Get10Percent;
 import receiptsystem.DETaxComputation;
 import receiptsystem.HolidayGreeting;
@@ -11,9 +12,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
-import java.util.Scanner;
-
-import abstractClasses.Decorator;
 import abstractClasses.TaxComputationMethod;
 import decorators.PostDecorator;
 import decorators.PreDecorator;
@@ -36,7 +34,7 @@ public class ReceiptFactory {
 	public ReceiptFactory() { // constructor
 		// 1. Populates array of TaxComputationMethod objects and array of AddOn objects
 		// (as if downloaded from the BestBuy web site).
-		taxComputationsObjs = new TaxComputationMethod[] { new MDTaxComputation(), new DETaxComputation() };
+		taxComputationsObjs = new TaxComputationMethod[] { new MDTaxComputation(), new DETaxComputation(), new CATaxComputation() };
 
 		// 2. Reads config file to create and save StoreHeader object (store_num,
 		// street_addr, etc.) to be used on all receipts.
