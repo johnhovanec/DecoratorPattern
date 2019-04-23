@@ -2,19 +2,21 @@ package receiptsystem;
 
 import interfaces.Rebate;
 
-public class Rebate1406 implements Rebate{
+public class Rebate1406 implements Rebate {
 
 	@Override
 	public boolean applies(PurchasedItems items) {
-		// TODO Auto-generated method stub
-			return items.containsItem("1406"); 
+		return items.containsItem("1406");
 	}
 
 	@Override
 	public String getLines() {
-		// TODO Auto-generated method stub
-		return "Mail-in Rebate for Item #1406\n "
-				+  "Name:\n Address:\n\n Mail to: Best Buy Rebates, P.O. Box 1400, Orlando, FL";
+		return "$10 REBATE  Item #1406  Ducky Mechanical Keyboard\n\n" +
+				"Mail ORIGINAL receipt and Proof of Purchase to:\n\n" +
+				"BEST BUY/DUCKY KEYBOARD Rebates,\n" +
+				"P.O. Box 1400,\n" + 
+				"Orlando, FL 32789\n\n" +
+				"Please allow 3-4 weeks for processing";
 	}
 
 }

@@ -6,13 +6,14 @@ public class Coupon100Get10Percent implements Rebate{
 
 	@Override
 	public boolean applies(PurchasedItems items) {
-		// TODO Auto-generated method stub
-		return false;
+		if(items.getTotalCost() >= 100)
+			return true;
+		else
+			return false;
 	}
 
 	@Override
 	public String getLines() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
