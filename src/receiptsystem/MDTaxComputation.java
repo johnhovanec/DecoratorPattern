@@ -28,17 +28,6 @@ public class MDTaxComputation extends TaxComputationMethod {
 		// ask about this method okay to be protected, instructions mentioned private
 		// MD tax holiday is August 14–20
 
-		// Temp
-		if (checkDateRange(date))
-			System.out.println("Tax Holiday!");
-		else
-			System.out.println("Not a tax holiday");
-
-		return checkDateRange(date);
-	}
-
-	// Helper method, needed?
-	private boolean checkDateRange(Date date) {
 		Calendar receiptDate = Calendar.getInstance();
 		receiptDate.setTime(date);
 		int YEAR = receiptDate.get(Calendar.YEAR);
@@ -57,9 +46,13 @@ public class MDTaxComputation extends TaxComputationMethod {
 			e.printStackTrace();
 		}
 
-		if (receiptDate.after(start) && receiptDate.before(end))
+		if (receiptDate.after(start) && receiptDate.before(end)) {
+			System.out.println("Tax Holiday!");
 			return true;
-		else
+		}
+		else {
+			System.out.println("Not a tax holiday");
 			return false;
+		}
 	}
 }

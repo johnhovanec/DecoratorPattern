@@ -41,7 +41,7 @@ public class BasicReceipt implements Receipt {
 		while (itr.hasNext()) {
 			storeItem = itr.next();
 			System.out.printf("%-10s%-30s%11s%n", storeItem.getItemCode(), storeItem.getItemDescription(),
-					storeItem.getItemPrice());
+					"$" + storeItem.getItemPrice());
 		}
 		System.out.printf("%n%-30s %20s %n", "Total Sale", " $" + String.format("%.2f", items.getTotalCost()));
 		System.out.printf("%n%-2s %-10s(%-3s%%) %31s %n", store_header.getStateCode(), "Sales Tax ",
