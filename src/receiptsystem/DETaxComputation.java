@@ -10,7 +10,7 @@ public class DETaxComputation extends TaxComputationMethod {
 		// calls private method taxHoliday as part of this computation-- ask, think it
 		// has to be protected
 
-		// DE has no sales tax, always return 0.0
+		// DE has no sales tax, always return 0.0, instructions mention returning null?
 		return TAX_RATE;
 	}
 

@@ -55,9 +55,9 @@ public class ReceiptFactory {
 		// 		an AddOn object applies, then determines if the AddOn is of type
 		// 		SecondaryHeader, Rebate, or Coupon.
 		// 		If of type SecondaryHeader, then creates a PreDecorator for other AddOn. If of
-		// type Rebate or Coupon, then creates a PostDecorator.
-		// 5. Links in the decorator object based on the Decorator design pattern.
-		// 6. Returns decorated BasicReceipt object as type Receipt.
+		// 		type Rebate or Coupon, then creates a PostDecorator.
+		// 		5. Links in the decorator object based on the Decorator design pattern.
+		// 		6. Returns decorated BasicReceipt object as type Receipt.
 		Receipt receipt = new BasicReceipt(items, date);
 		((BasicReceipt) receipt).setStoreHeader(store_header);
 		((BasicReceipt) receipt).setTaxComputationMethod(stateTaxMethod);

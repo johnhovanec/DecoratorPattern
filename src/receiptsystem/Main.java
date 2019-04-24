@@ -85,7 +85,7 @@ public class Main {
 		/// 2. Creates a PurchasedItems object (selections made by user)
 		/// 3. Constructs a ReceiptFactory object.
 		/// 3. Prompts user for items to purchase, storing each in PurchasedItems.
-		// 4. Calls the getReceipt method of the factory to obtain constructed receipt.
+		/// 4. Calls the getReceipt method of the factory to obtain constructed receipt.
 
 		// // 5. Prints receipt by call to method prtReceipt.
 		// get receipt date
