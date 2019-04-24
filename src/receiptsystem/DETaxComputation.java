@@ -15,11 +15,10 @@ public class DETaxComputation extends TaxComputationMethod {
 	}
 
 	protected boolean taxHoliday(Date date) {
-		// returns true if date of receipt within the state’s tax free holiday, // else
-		// returns false. Supporting method of method computeTax.
+		// OK to through UnsupportedOperationException?
 		// ask about this method okay to be protected, instructions mentioned private
 
-		// DE has no sales tax, OK?
+		// DE has no sales tax and therefore no tax holidays
 		throw new UnsupportedOperationException();
 	}
 }

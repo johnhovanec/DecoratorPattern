@@ -16,11 +16,10 @@ public class MDTaxComputation extends TaxComputationMethod {
 	public double computeTax(PurchasedItems items, Date date) {
 		// calls private method taxHoliday as part of this computation-- ask, think it
 		// has to be protected
-		if (taxHoliday(date)) {
+		if (taxHoliday(date))
 			return 0.0;
-		} else {
-			return TAX_RATE;
-		}
+		else
+			return items.getTotalCost() * TAX_RATE;
 	}
 
 	protected boolean taxHoliday(Date date) {

@@ -5,11 +5,11 @@ import java.util.Date;
 import abstractClasses.TaxComputationMethod;
 
 public class CATaxComputation extends TaxComputationMethod{
-	public final double TAX_RATE = 0.06; // Ok in the subclass?
+	public final double TAX_RATE = 0.075; // Ok in the subclass?
 	
 	@Override
 	public double computeTax(PurchasedItems items, Date date) {
-		return TAX_RATE;
+		return items.getTotalCost() * TAX_RATE;
 	}
 
 	@Override
