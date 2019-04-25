@@ -44,11 +44,13 @@ public class BasicReceipt implements Receipt {
 					"$" + storeItem.getItemPrice());
 		}
 		System.out.printf("%n%-30s %20s %n", "Total Sale", " $" + String.format("%.2f", items.getTotalCost()));
-		System.out.printf("%n%-2s %-10s(%-3s%%) %31s %n", store_header.getStateCode(), "Sales Tax ",
-				String.format("%.1f", (tc.computeTax(items, date)/items.getTotalCost()) * 100),
-				" $" + String.format("%.2f", tc.computeTax(items, date)));
-		System.out.printf("%n%-30s %20s %n", "TOTAL SALE", " $"
-				+ String.format("%.2f", (items.getTotalCost() +  tc.computeTax(items, date))));
+		if (tc.computeTax(items, date) != 0.0) {
+			System.out.printf("%n%-2s %-10s(%-3s%%) %31s %n", store_header.getStateCode(), "Sales Tax ",
+					String.format("%.1f", (tc.computeTax(items, date) / items.getTotalCost()) * 100),
+					" $" + String.format("%.2f", tc.computeTax(items, date)));
+		}
+		System.out.printf("%n%-30s %20s %n", "TOTAL SALE",
+				" $" + String.format("%.2f", (items.getTotalCost() + tc.computeTax(items, date))));
 		System.out.println("\n===================================================\n");
 	}
 

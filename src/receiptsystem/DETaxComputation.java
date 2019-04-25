@@ -12,6 +12,7 @@ public class DETaxComputation extends TaxComputationMethod {
 
 		// DE has no sales tax, always return 0.0, instructions mention returning null?
 		return TAX_RATE;
+		//throw new UnsupportedOperationException();
 	}
 
 	protected boolean taxHoliday(Date date) {
