@@ -7,17 +7,18 @@ import java.util.Calendar;
 import java.util.Date;
 
 import abstractClasses.TaxComputationMethod;
+import exceptions.TaxFreeHolidayException;
 
 //tax computation objects for other states are similar
 
 public class MDTaxComputation extends TaxComputationMethod {
 	public final double TAX_RATE = 0.06; // OK in the subclass?
 
-	public double computeTax(PurchasedItems items, Date date) {
+	public double computeTax(PurchasedItems items, Date date) throws TaxFreeHolidayException {
 		// calls private method taxHoliday as part of this computation-- ask, think it
 		// has to be protected
 		if (taxHoliday(date))
-			return 0.0;
+			throw new TaxFreeHolidayException();
 		else
 			return items.getTotalCost() * TAX_RATE;
 	}

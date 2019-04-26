@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Iterator;
 
 import abstractClasses.TaxComputationMethod;
+import exceptions.TaxFreeHolidayException;
 import interfaces.ItemsIterator;
 import interfaces.Receipt;
 
@@ -44,14 +45,23 @@ public class BasicReceipt implements Receipt {
 					"$" + storeItem.getItemPrice());
 		}
 		System.out.printf("%n%-30s %20s %n", "Total Sale", " $" + String.format("%.2f", items.getTotalCost()));
-		if (tc.computeTax(items, date) != 0.0) {
+		double tax = 0.0;
+		try {
+			tax = tc.computeTax(items, date);
+			
 			System.out.printf("%n%-2s %-10s(%-3s%%) %31s %n", store_header.getStateCode(), "Sales Tax ",
-					String.format("%.1f", (tc.computeTax(items, date) / items.getTotalCost()) * 100),
-					" $" + String.format("%.2f", tc.computeTax(items, date)));
-		}
-		System.out.printf("%n%-30s %20s %n", "TOTAL SALE",
-				" $" + String.format("%.2f", (items.getTotalCost() + tc.computeTax(items, date))));
-		System.out.println("\n===================================================\n");
+					String.format("%.1f", (tax / items.getTotalCost()) * 100),
+					" $" + String.format("%.2f", tax));
+		} catch (TaxFreeHolidayException e) {
+			System.out.printf("%n%-2s %-10s %-3s% %20s %.2f %n", store_header.getStateCode(), "Sales Tax ",
+					"%-10s %.2f", "TAX HOLIDAY!",
+					" $" + 0.00);
+		} catch (UnsupportedOperationException e) {
+			// TODO: handle exception
+		} finally {
+			System.out.printf("%n%-30s %20s %n", "TOTAL SALE",
+					" $" + String.format("%.2f", (items.getTotalCost() + tax)));
+			System.out.println("\n===================================================\n");
+		}	
 	}
-
 }
