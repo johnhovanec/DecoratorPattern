@@ -3,7 +3,6 @@ package factories;
 import receiptsystem.BasicReceipt;
 import receiptsystem.Coupon100Get10Percent;
 import receiptsystem.HolidayGreeting;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -26,22 +25,14 @@ import interfaces.SecondaryHeading;
 
 public class ReceiptFactory {
 	private String CONFIG_FILE_PATH = "./src/config.txt";
-	StoreHeader store_header; // contains street_addr, zip_code, state_code, phone num, store num
-	private TaxComputationMethod[] taxComputationsObjs; // tax computation objs (for each state)
+	StoreHeader store_header; 
+	private TaxComputationMethod[] taxComputationsObjs; 
 	private TaxComputationMethod stateTaxMethod;
-	private AddOn[] addOns = new AddOn[] {new HolidayGreeting(), new Rebate1406(), new Coupon100Get10Percent()}; // secondary heading, rebate and coupon add-ons (hardcoded here)
+	private AddOn[] addOns = new AddOn[] {new HolidayGreeting(), new Rebate1406(), new Coupon100Get10Percent()};
 
-	public ReceiptFactory() { // constructor
-		// 1. Populates array of TaxComputationMethod objects and array of AddOn objects
-		// (as if downloaded from the BestBuy web site).
+	public ReceiptFactory() { 
 		taxComputationsObjs = new TaxComputationMethod[] { new MDTaxComputation(), new DETaxComputation(), new CATaxComputation() };
-
-		// 2. Reads config file to create and save StoreHeader object (store_num,
-		// street_addr, etc.) to be used on all receipts.
 		store_header = setStoreHeader();
-
-		// 3. Based on the state code (e.g., “MD”) creates and stores appropriate
-		// StateComputation object to be used on all receipts.
 		stateTaxMethod = setStateTax(store_header.getStateCode());
 	}
 

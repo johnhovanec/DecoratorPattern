@@ -1,8 +1,8 @@
 package receiptsystem;
 
 public class StoreItem {
-	private String itemCode; // e.g., 3010
-	private String itemDescription; // e.g., Dell Laptop
+	private String itemCode; 
+	private String itemDescription; 
 	private String itemPrice;
 
 	public StoreItem(String code, String description, String price) {
@@ -11,7 +11,6 @@ public class StoreItem {
 		itemPrice = price;
 	}
 	
-	// appropriate getters and setters
 	public String getItemCode() {
 		return itemCode;
 	}

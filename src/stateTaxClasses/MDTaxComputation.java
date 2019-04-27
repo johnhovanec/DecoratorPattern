@@ -10,14 +10,10 @@ import abstractClasses.TaxComputationMethod;
 import exceptions.TaxFreeHolidayException;
 import receiptsystem.PurchasedItems;
 
-//tax computation objects for other states are similar
-
 public class MDTaxComputation extends TaxComputationMethod {
 	public final double TAX_RATE = 0.06; // OK in the subclass?
 
 	public double computeTax(PurchasedItems items, Date date) throws TaxFreeHolidayException {
-		// calls private method taxHoliday as part of this computation-- ask, think it
-		// has to be protected
 		if (taxHoliday(date))
 			throw new TaxFreeHolidayException();
 		else
@@ -25,10 +21,8 @@ public class MDTaxComputation extends TaxComputationMethod {
 	}
 
 	protected boolean taxHoliday(Date date) {
-		// returns true if date of receipt within the state’s tax free holiday, // else
-		// returns false. Supporting method of method computeTax.
-		// ask about this method okay to be protected, instructions mentioned private
-		// MD tax holiday is August 14–20
+		// Returns true if date of receipt within the state’s tax free holiday 
+		// Supporting method of method computeTax.
 
 		Calendar receiptDate = Calendar.getInstance();
 		receiptDate.setTime(date);

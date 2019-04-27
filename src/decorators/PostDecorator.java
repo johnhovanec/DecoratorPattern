@@ -5,7 +5,7 @@ import interfaces.AddOn;
 import interfaces.Receipt;
 
 public class PostDecorator extends Decorator {
-	private AddOn a; // ?? a guess on these
+	private AddOn a; 
 	private Receipt r;
 
 	public PostDecorator(Receipt r, AddOn a) {

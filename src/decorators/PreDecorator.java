@@ -5,12 +5,12 @@ import interfaces.AddOn;
 import interfaces.Receipt;
 
 public class PreDecorator extends Decorator{
-	private AddOn a;   // ?? a guess on these
+	private AddOn a;   
 	private Receipt r;
 	
 	public PreDecorator(Receipt r, AddOn a) {
 		super(r, a);
-		this.r = r;		// Check if call to this is OK?
+		this.r = r;		
 		this.a = a;
 	}
 
@@ -19,7 +19,5 @@ public class PreDecorator extends Decorator{
 		// TODO Auto-generated method stub
 		System.out.println(a.getLines());
 		callTrailer();
-		
 	}
-
 }

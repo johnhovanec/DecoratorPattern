@@ -21,7 +21,6 @@ public class Store {
     	return null;
     }
     
-    // --- private methods
     private void populateStoreItems(){
         itemsList.add(new StoreItem("1406", "Ducky Mechanical Keyboard, TKL", "112.50"));
         itemsList.add(new StoreItem("6002", "USB 19GB Thumbdrive, silver", "12.80"));
@@ -34,6 +33,5 @@ public class Store {
         itemsList.add(new StoreItem("3489", "Seagate 500GB SSD hard drive", "192.50"));
         itemsList.add(new StoreItem("1010", "USB 8GB Thumbdrive, blue", "7.50"));
     }
-    
 }
 

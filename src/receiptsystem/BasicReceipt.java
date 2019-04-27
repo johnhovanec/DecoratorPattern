@@ -10,12 +10,12 @@ import interfaces.ItemsIterator;
 import interfaces.Receipt;
 
 public class BasicReceipt implements Receipt {
-	private StoreHeader store_header; // street address, state code, phone number, store number
+	private StoreHeader store_header; 
 	private TaxComputationMethod tc;
-	private Date date; // may also be a String type
+	private Date date; 
 	private PurchasedItems items;
 
-	public BasicReceipt(PurchasedItems items, Date date) { // Date may also be a String type
+	public BasicReceipt(PurchasedItems items, Date date) { 
 		this.items = items;
 		this.date = date;
 	}

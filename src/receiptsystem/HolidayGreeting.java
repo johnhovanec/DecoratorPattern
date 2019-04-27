@@ -13,5 +13,4 @@ public class HolidayGreeting implements SecondaryHeading {
 	public String getLines() {
 		return "\t * Happy Holidays from Best Buy *";
 	}
-
 }

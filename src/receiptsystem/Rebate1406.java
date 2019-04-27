@@ -19,5 +19,4 @@ public class Rebate1406 implements Rebate {
 				"Please allow 3-4 weeks for processing\n\n" + 
 				"\n===================================================\n";
 	}
-
 }
