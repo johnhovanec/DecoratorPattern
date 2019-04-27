@@ -1,7 +1,8 @@
-package receiptsystem;
+package stateTaxClasses;
 
 import java.util.Date;
 import abstractClasses.TaxComputationMethod;
+import receiptsystem.PurchasedItems;
 
 public class DETaxComputation extends TaxComputationMethod {
 	//private final double TAX_RATE = 0.0;

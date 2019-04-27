@@ -1,8 +1,9 @@
-package receiptsystem;
+package stateTaxClasses;
 
 import java.util.Date;
 
 import abstractClasses.TaxComputationMethod;
+import receiptsystem.PurchasedItems;
 
 public class CATaxComputation extends TaxComputationMethod{
 	public final double TAX_RATE = 0.075; // Ok in the subclass?

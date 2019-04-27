@@ -17,7 +17,8 @@ public class Coupon100Get10Percent implements Rebate{
 		return "\n10% OFF COUPON FOR SPENDING OVER $100\n\n" +
 				"Present this coupon at your next purchase\n" +
 				"and receive 10% off your purchase!\n\n" +
-				"Restrictions apply, see store for details\n";
+				"Restrictions apply, see store for details\n\n" + 
+				"\n===================================================\n";
 	}
 
 }

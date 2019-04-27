@@ -1,4 +1,4 @@
-package receiptsystem;
+package stateTaxClasses;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -8,6 +8,7 @@ import java.util.Date;
 
 import abstractClasses.TaxComputationMethod;
 import exceptions.TaxFreeHolidayException;
+import receiptsystem.PurchasedItems;
 
 //tax computation objects for other states are similar
 
@@ -48,11 +49,9 @@ public class MDTaxComputation extends TaxComputationMethod {
 		}
 
 		if (receiptDate.after(start) && receiptDate.before(end)) {
-			System.out.println("Tax Holiday!");
 			return true;
 		}
 		else {
-			System.out.println("Not a tax holiday");
 			return false;
 		}
 	}

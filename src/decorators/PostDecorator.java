@@ -16,7 +16,6 @@ public class PostDecorator extends Decorator {
 
 	@Override
 	public void prtReceipt() {
-		// TODO Auto-generated method stub
 		callTrailer();
 		System.out.println(a.getLines());
 	}

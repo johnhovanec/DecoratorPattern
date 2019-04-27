@@ -1,11 +1,8 @@
 package factories;
 
 import receiptsystem.BasicReceipt;
-import receiptsystem.CATaxComputation;
 import receiptsystem.Coupon100Get10Percent;
-import receiptsystem.DETaxComputation;
 import receiptsystem.HolidayGreeting;
-import receiptsystem.MDTaxComputation;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -18,6 +15,9 @@ import decorators.PreDecorator;
 import receiptsystem.PurchasedItems;
 import receiptsystem.Rebate1406;
 import receiptsystem.StoreHeader;
+import stateTaxClasses.CATaxComputation;
+import stateTaxClasses.DETaxComputation;
+import stateTaxClasses.MDTaxComputation;
 import interfaces.AddOn;
 import interfaces.Coupon;
 import interfaces.Rebate;

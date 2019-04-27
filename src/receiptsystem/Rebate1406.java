@@ -16,7 +16,8 @@ public class Rebate1406 implements Rebate {
 				"BEST BUY/DUCKY KEYBOARD Rebates,\n" +
 				"P.O. Box 1400,\n" + 
 				"Orlando, FL 32789\n\n" +
-				"Please allow 3-4 weeks for processing";
+				"Please allow 3-4 weeks for processing\n\n" + 
+				"\n===================================================\n";
 	}
 
 }

@@ -33,6 +33,7 @@ public class BasicReceipt implements Receipt {
 		ItemsIterator itr = items.createIterator();
 		StoreItem storeItem;
 		double tax = 0.0;
+		boolean taxHoliday = false;
 
 		System.out.println("\n===================================================\n");
 		System.out.printf("%n%-30s %20s %n", "BEST BUY", "STORE #" + store_header.getStoreNum());
@@ -51,6 +52,7 @@ public class BasicReceipt implements Receipt {
 			System.out.printf("%n%-2s %-10s(%-3s%%) %31s %n", store_header.getStateCode(), "Sales Tax ",
 					String.format("%.1f", (tax / items.getTotalCost()) * 100), " $" + String.format("%.2f", tax));
 		} catch (TaxFreeHolidayException e) {
+			taxHoliday = true;
 			System.out.printf("%n%-2s %-10s %37s %n", store_header.getStateCode(), "Sales Tax ", "$0.00");
 		} catch (UnsupportedOperationException e) {
 			// If a tax free state we print no tax info
@@ -59,5 +61,11 @@ public class BasicReceipt implements Receipt {
 					" $" + String.format("%.2f", (items.getTotalCost() + tax)));
 			System.out.println("\n===================================================\n");
 		}
+		
+		if(taxHoliday) {
+			System.out.printf("%32s %n", "TAX FREE HOLIDAY!");
+			System.out.println("\n===================================================\n");
+		}
+			
 	}
 }
