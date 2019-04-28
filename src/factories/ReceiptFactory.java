@@ -33,7 +33,7 @@ public class ReceiptFactory {
 	public ReceiptFactory() {
 		taxComputationsObjs = new TaxComputationMethod[] { new MDTaxComputation(), new DETaxComputation(),
 				new CATaxComputation() };
-		store_header = setStoreHeader();
+		store_header = setHeader();
 		stateTaxMethod = setStateTax(store_header.getStateCode());
 	}
 
@@ -62,7 +62,7 @@ public class ReceiptFactory {
 	}
 
 	// Set store header from the config file
-	private StoreHeader setStoreHeader() {
+	private StoreHeader setHeader() {
 		String contents = null;
 		try {
 			contents = readConfigFile();

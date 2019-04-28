@@ -11,7 +11,7 @@ import interfaces.Receipt;
 public class Main {
 
 	public static void main(String[] args) {
-		Store store = new Store();	// Holds the collection of items possible to add to a receipt
+		Store store = new Store(); // Holds the collection of items possible to add to a receipt
 		Date date = null;
 		PurchasedItems purchasedItems = new PurchasedItems();
 		Scanner scanner = new Scanner(System.in);
@@ -38,7 +38,6 @@ public class Main {
 					e.printStackTrace();
 				}
 				System.out.println("New receipt started for date: " + date + "\n");
-
 				break;
 			case "2":
 				// Add Items
@@ -61,7 +60,7 @@ public class Main {
 					}
 					System.out.println("Added to receipt: " + purchasedItems.getLastItem().toString());
 				}
-
+				
 				// Call factory to make receipt
 				receipt = receiptFactory.getReceipt(purchasedItems, date);
 				break;

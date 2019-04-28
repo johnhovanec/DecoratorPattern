@@ -5,7 +5,7 @@ public class StoreHeader {
 	private String zip_code;
 	private String state_code;
 	private String phone_num;
-	private String store_num; 
+	private String store_num;
 
 	public StoreHeader(String street_addr, String zip_code, String state_code, String phone_num, String store_num) {
 		this.street_addr = street_addr;
@@ -18,19 +18,19 @@ public class StoreHeader {
 	public String getStreetAddr() {
 		return street_addr;
 	}
-	
+
 	public String getZipCode() {
 		return zip_code;
 	}
-	
+
 	public String getStateCode() {
 		return state_code;
 	}
-	
+
 	public String getPhoneNum() {
 		return phone_num;
 	}
-	
+
 	public String getStoreNum() {
 		return store_num;
 	}
