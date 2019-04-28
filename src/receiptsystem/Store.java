@@ -2,7 +2,6 @@ package receiptsystem;
 
 import java.util.ArrayList;
 
-// Ask about doing this 
 public class Store {
     
     ArrayList<StoreItem> itemsList;
@@ -12,7 +11,7 @@ public class Store {
         populateStoreItems();
     }
     
-    // Used to fetch item based on the itemcode entered
+    // Used to fetch item based on the itemcode entered for adding to receipt
     public StoreItem getItem(String itemCode) {
     	for (StoreItem item : itemsList) {
 			if(item.getItemCode().equals(itemCode))

@@ -25,7 +25,7 @@ public class PurchasedItems {
 		return total;
 	}
 
-	// Used for confirmation to the user for each item added to the receipt
+	// Used to send confirmation to the user for each item added to the receipt
 	public StoreItem getLastItem() {
 		return items.get(items.size() - 1);
 	}

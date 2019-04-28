@@ -5,7 +5,6 @@ import abstractClasses.TaxComputationMethod;
 import receiptsystem.PurchasedItems;
 
 public class DETaxComputation extends TaxComputationMethod {
-	
 	public double computeTax(PurchasedItems items, Date date) {
 		// DE has no sales tax
 		throw new UnsupportedOperationException();

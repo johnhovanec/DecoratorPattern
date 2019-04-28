@@ -11,7 +11,7 @@ import exceptions.TaxFreeHolidayException;
 import receiptsystem.PurchasedItems;
 
 public class MDTaxComputation extends TaxComputationMethod {
-	public final double TAX_RATE = 0.06;
+	private final double TAX_RATE = 0.06;
 
 	public double computeTax(PurchasedItems items, Date date) throws TaxFreeHolidayException {
 		if (taxHoliday(date))
@@ -39,9 +39,8 @@ public class MDTaxComputation extends TaxComputationMethod {
 			e.printStackTrace();
 		}
 
-		if (receiptDate.after(start) && receiptDate.before(end)) {
+		if (receiptDate.after(start) && receiptDate.before(end)) 
 			return true;
-		} 
 		else
 			return false;
 	}

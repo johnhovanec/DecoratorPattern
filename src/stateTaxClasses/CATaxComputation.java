@@ -6,7 +6,7 @@ import abstractClasses.TaxComputationMethod;
 import receiptsystem.PurchasedItems;
 
 public class CATaxComputation extends TaxComputationMethod{
-	public final double TAX_RATE = 0.075; 
+	private final double TAX_RATE = 0.075; 
 	
 	@Override
 	public double computeTax(PurchasedItems items, Date date) {

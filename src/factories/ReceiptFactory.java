@@ -38,7 +38,6 @@ public class ReceiptFactory {
 	}
 
 	public Receipt getReceipt(PurchasedItems items, Date date) {
-
 		Receipt receipt = new BasicReceipt(items, date);
 		((BasicReceipt) receipt).setStoreHeader(store_header);
 		((BasicReceipt) receipt).setTaxComputationMethod(stateTaxMethod);
