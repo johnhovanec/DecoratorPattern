@@ -1,14 +1,13 @@
 package receiptsystem;
 
 import java.util.ArrayList;
-
 import interfaces.ItemsIterator;
 
 public class PurchasedItems {
 	private ArrayList<StoreItem> items;
 
 	public PurchasedItems() {
-		items = new ArrayList();
+		items = new ArrayList<StoreItem>();
 	}
 
 	public ItemsIterator createIterator() {
@@ -26,15 +25,7 @@ public class PurchasedItems {
 		return total;
 	}
 
-//	public StoreItem getItem(int index) {
-//		return items.get(index);
-//	}
-
-//	public int getSize() {
-//		return items.size();
-//	}
-
-	// Needed???
+	// Used for confirmation to the user for each item added to the receipt
 	public StoreItem getLastItem() {
 		return items.get(items.size() - 1);
 	}

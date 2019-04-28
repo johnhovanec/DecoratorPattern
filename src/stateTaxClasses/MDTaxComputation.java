@@ -11,7 +11,7 @@ import exceptions.TaxFreeHolidayException;
 import receiptsystem.PurchasedItems;
 
 public class MDTaxComputation extends TaxComputationMethod {
-	public final double TAX_RATE = 0.06; // OK in the subclass?
+	public final double TAX_RATE = 0.06;
 
 	public double computeTax(PurchasedItems items, Date date) throws TaxFreeHolidayException {
 		if (taxHoliday(date))
@@ -21,9 +21,6 @@ public class MDTaxComputation extends TaxComputationMethod {
 	}
 
 	protected boolean taxHoliday(Date date) {
-		// Returns true if date of receipt within the state’s tax free holiday 
-		// Supporting method of method computeTax.
-
 		Calendar receiptDate = Calendar.getInstance();
 		receiptDate.setTime(date);
 		int YEAR = receiptDate.get(Calendar.YEAR);
@@ -44,9 +41,8 @@ public class MDTaxComputation extends TaxComputationMethod {
 
 		if (receiptDate.after(start) && receiptDate.before(end)) {
 			return true;
-		}
-		else {
+		} 
+		else
 			return false;
-		}
 	}
 }

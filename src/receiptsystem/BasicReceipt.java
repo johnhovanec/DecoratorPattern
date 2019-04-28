@@ -2,20 +2,18 @@ package receiptsystem;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
-
 import abstractClasses.TaxComputationMethod;
 import exceptions.TaxFreeHolidayException;
 import interfaces.ItemsIterator;
 import interfaces.Receipt;
 
 public class BasicReceipt implements Receipt {
-	private StoreHeader store_header; 
+	private StoreHeader store_header;
 	private TaxComputationMethod tc;
-	private Date date; 
+	private Date date;
 	private PurchasedItems items;
 
-	public BasicReceipt(PurchasedItems items, Date date) { 
+	public BasicReceipt(PurchasedItems items, Date date) {
 		this.items = items;
 		this.date = date;
 	}
@@ -41,12 +39,15 @@ public class BasicReceipt implements Receipt {
 				store_header.getZipCode(), store_header.getPhoneNum());
 		System.out.printf("%n%-20s %n", formatter.format(date));
 		System.out.printf("%n%-20s %n", "ITEM #");
+		
 		while (itr.hasNext()) {
 			storeItem = itr.next();
 			System.out.printf("%-10s%-30s%11s%n", storeItem.getItemCode(), storeItem.getItemDescription(),
 					"$" + storeItem.getItemPrice());
 		}
+		
 		System.out.printf("%n%-30s %20s %n", "Total Sale", " $" + String.format("%.2f", items.getTotalCost()));
+		
 		try {
 			tax = tc.computeTax(items, date);
 			System.out.printf("%n%-2s %-10s(%-3s%%) %31s %n", store_header.getStateCode(), "Sales Tax ",
@@ -55,17 +56,16 @@ public class BasicReceipt implements Receipt {
 			taxHoliday = true;
 			System.out.printf("%n%-2s %-10s %37s %n", store_header.getStateCode(), "Sales Tax ", "$0.00");
 		} catch (UnsupportedOperationException e) {
-			// If a tax free state we print no tax info
+			// If here it's a tax free state so print no tax info
 		} finally {
-			System.out.printf("%n%-30s %20s %n", "TOTAL SALE",
+			System.out.printf("%n%-30s %20s %n", "AMOUNT DUE",
 					" $" + String.format("%.2f", (items.getTotalCost() + tax)));
 			System.out.println("\n===================================================\n");
 		}
-		
-		if(taxHoliday) {
+
+		if (taxHoliday) {
 			System.out.printf("%32s %n", "TAX FREE HOLIDAY!");
 			System.out.println("\n===================================================\n");
 		}
-			
 	}
 }

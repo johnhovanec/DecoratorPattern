@@ -16,7 +16,6 @@ public class PreDecorator extends Decorator{
 
 	@Override
 	public void prtReceipt() {
-		// TODO Auto-generated method stub
 		System.out.println(a.getLines());
 		callTrailer();
 	}

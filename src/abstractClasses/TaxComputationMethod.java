@@ -10,5 +10,5 @@ public abstract class TaxComputationMethod {
 	public abstract double computeTax(PurchasedItems items, Date date)
 			throws TaxFreeHolidayException, UnsupportedOperationException;
 
-	protected abstract boolean taxHoliday(Date date); // guessing it has a param; guessing it is protected -ask?
+	protected abstract boolean taxHoliday(Date date);
 }

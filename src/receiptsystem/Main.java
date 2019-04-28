@@ -5,14 +5,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-
 import factories.ReceiptFactory;
 import interfaces.Receipt;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Store store = new Store();
+		Store store = new Store();	// Holds the collection of items possible to add to a receipt
 		Date date = null;
 		PurchasedItems purchasedItems = new PurchasedItems();
 		Scanner scanner = new Scanner(System.in);

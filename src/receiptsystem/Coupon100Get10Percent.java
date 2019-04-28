@@ -1,8 +1,8 @@
 package receiptsystem;
 
-import interfaces.Rebate;
+import interfaces.Coupon;
 
-public class Coupon100Get10Percent implements Rebate{
+public class Coupon100Get10Percent implements Coupon{
 
 	@Override
 	public boolean applies(PurchasedItems items) {

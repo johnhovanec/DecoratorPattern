@@ -5,7 +5,7 @@ public class StoreHeader {
 	private String zip_code;
 	private String state_code;
 	private String phone_num;
-	private String store_num; // e.g., #1004
+	private String store_num; 
 
 	public StoreHeader(String street_addr, String zip_code, String state_code, String phone_num, String store_num) {
 		this.street_addr = street_addr;
@@ -35,7 +35,6 @@ public class StoreHeader {
 		return store_num;
 	}
 
-	// Check -- this may need a different implementation
 	public String toString() {
 		return street_addr + "\n" + state_code + "\n" + zip_code + "\n" + store_num + "\n" + phone_num;
 	}
